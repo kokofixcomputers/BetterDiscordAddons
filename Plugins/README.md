@@ -10,7 +10,7 @@
 [patreon-link]: https://patreon.com/MircoWittrien
 
  - [Hide Disabled Emojis](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/HideDisabledEmojis) - Hide Disabled Emojis
- - [Discord Free Emojis](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/DiscordFreeEmojis64px) - Hide Disabled Emojis
+ - [Discord Free Emojis](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/DiscordFreeEmojis64px) - Free Discord Emojis
  - [Better Friend List](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/BetterFriendList) - Adds extra Controls to the Friends Page, for example sort by Name/Status, Search and All/Request/Blocked Amount
  - [Better NSFW Tag](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/BetterNsfwTag) - Adds a more noticeable Tag to NSFW Channels
  - [Better Search Page](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/BetterSearchPage) - Makes the Controls in the Search Results Page sticky
