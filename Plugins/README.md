@@ -10,6 +10,8 @@
 [patreon-link]: https://patreon.com/MircoWittrien
 
  - [Hide Disabled Emojis](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/HideDisabledEmojis) - Hide Disabled Emojis
+ - [Zeres Plugin Library](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/0PluginLibrary) - Plugin library enabling plugins to do advanced functions easily
+ - [Call Time Counter](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/CallTimeCounter) - Shows how much time you are in a voice chat.
  - [Better Volume](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/BetterVolume) - Hide Disabled Emojis
  - [Discord Free Emojis](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/DiscordFreeEmojis64px) - Free Discord Emojis
  - [Better Friend List](https://github.com/kokofixcomputers/BetterDiscordAddons/tree/master/Plugins/BetterFriendList) - Adds extra Controls to the Friends Page, for example sort by Name/Status, Search and All/Request/Blocked Amount
