@@ -116,6 +116,7 @@
 	--interactive-active: rgb(var(--textbrightest_v));
 	--interactive-muted: rgb(var(--textdarkest_v));
 	--logo-primary: rgb(var(--textbrightest_v));
+	--focus-primary: rgb(var(--focuscolor, var(--accentcolor_v))) !important;
 	--modal-background: rgba(var(--transparencycolor_v), .2);
 	--modal-footer-background: rgba(var(--transparencycolor_v), .2);
 	--home-background: transparent;
@@ -499,7 +500,7 @@ body::after {
 #app-mount .folder__17546.hover__043de {
 	background-color: rgba(var(--transparencycolor_v), .4);
 }
-#.expandedFolderBackground__1bec6 {							/* folder				background							*/
+.expandedFolderBackground__1bec6 {							/* folder				background							*/
 	background-color: rgba(var(--transparencycolor_v), .2);
 	border-radius: 15px 15px 24px 24px;
 	top: 0;
@@ -2940,6 +2941,8 @@ button.button__4f306.enabled__470f0:hover svg {
 }
 #app-mount .emojiAliasInput_dd55f7 .emojiInput__4fe54 {					/* emojisettings			nameinput							*/
 	background-color: rgba(var(--transparencycolor_v), .1);
+	margin-top: -1px;
+	margin-left: -8px;
 }
 
 #app-mount .auditLog__6c805 {								/* auditlogs				logitem								*/
@@ -3278,7 +3281,8 @@ button.button__4f306.enabled__470f0:hover svg {
 }
 
 #app-mount .root_a28985:not(.noBackground_ebd8f7),					/* modal				container (foldersettings)					*/
-#app-mount .modal__060da {								/* modal				container							*/
+#app-mount .modal__060da,								/* modal				container							*/
+#app-mount .bd-modal-root {								/* modal				bd modal							*/
 	background-color: transparent;
 	box-shadow: 0 0 0 1px rgba(var(--transparencycolor_v), .3), 0 2px 10px 0 rgba(var(--transparencycolor_v), .3);
 	position: relative;
@@ -3294,8 +3298,10 @@ button.button__4f306.enabled__470f0:hover svg {
 }
 .root_a28985::before,
 .modal__060da::before,
+.bd-modal-root::before,
 .root_a28985::after,
-.modal__060da::after {
+.modal__060da::after,
+.bd-modal-root::after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -3309,12 +3315,14 @@ button.button__4f306.enabled__470f0:hover svg {
 	z-index: -1;
 }
 .root_a28985::before,
-.modal__060da::before {
+.modal__060da::before,
+.bd-modal-root::before {
 	background: var(--popout_v) var(--popoutposition_v)/var(--popoutsize_v);
 	background-attachment: fixed;
 }
 .root_a28985::after,
-.modal__060da::after {
+.modal__060da::after,
+.bd-modal-root::after {
 	background-color: rgba(var(--transparencycolor_v), calc(var(--transparencyalpha_v) + 0.2));
 	backdrop-filter: blur(var(--popoutblur_v));
 }
@@ -3954,6 +3962,10 @@ button.button__4f306.enabled__470f0:hover svg {
 }
 .layer_ec16dd:nth-child(9) {
 	z-index: 1020;
+}
+.layer_ec16dd ~ .layer_ad604d,
+.layer_ec16dd ~ .backdrop__7e89b.withLayer__1fe9d {
+	z-index: 1021;
 }
 
 .translate_c2f6c4 {
@@ -6252,7 +6264,11 @@ img[src='/assets/387a7c504c96b992872d.svg'] {
 .none__51a8f::-webkit-scrollbar-corner,
 .none__51a8f::-webkit-scrollbar-thumb,
 .none__51a8f::-webkit-scrollbar-track,
-.none__51a8f::-webkit-scrollbar {
+.none__51a8f::-webkit-scrollbar,
+.none__3919e::-webkit-scrollbar-corner,
+.none__3919e::-webkit-scrollbar-thumb,
+.none__3919e::-webkit-scrollbar-track,
+.none__3919e::-webkit-scrollbar {
 	display: none;
 }
 
@@ -6484,10 +6500,14 @@ html .bd-toast.toast-warn.icon::before {
 	background-color: rgba(var(--transparencycolor_v), 0.3);
 }
 
-.bd-addon-views .bd-view-button:not(.selected):hover {
+.bd-addon-views .bd-view-button:not(.selected):hover,
+.bd-addon-controls .bd-button:hover,
+.bd-controls-basic .bd-button:hover {
 	background: rgba(var(--transparencycolor_v), .3);
 }
-.bd-addon-views .bd-view-button:not(.selected):active {
+.bd-addon-views .bd-view-button:not(.selected):active,
+.bd-addon-controls .bd-button:active,
+.bd-controls-basic .bd-button:active {
 	background: rgba(var(--accentcolor_v), .7);
 }
 .bd-addon-views .bd-view-button.selected svg {

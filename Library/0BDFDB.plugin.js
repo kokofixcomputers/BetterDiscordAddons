@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 3.5.8
+ * @version 3.5.9
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -3069,7 +3069,7 @@ module.exports = (_ => {
 				};
 				BDFDB.UserUtils.getBanner = function (id = BDFDB.UserUtils.me.id, guildId = Internal.LibraryStores.SelectedGuildStore.getGuildId(), canAnimate = false) {
 					let displayProfile = Internal.LibraryModules.MemberDisplayUtils.getDisplayProfile(id, guildId);
-					return (Internal.LibraryModules.IconUtils.getUserBannerURL(Object.assign({banner: displayProfile && displayProfile.banner, id: id}, {canAnimate})) || "").split("?")[0];
+					return ((!guildId ? Internal.LibraryModules.IconUtils.getUserBannerURL({banner: displayProfile && displayProfile.banner, id, canAnimate}) : Internal.LibraryModules.IconUtils.getGuildMemberBannerURL({banner: displayProfile && displayProfile.banner, id, guildId, canAnimate})) || "").split("?")[0];
 				};
 				BDFDB.UserUtils.can = function (permission, id = BDFDB.UserUtils.me.id, channelId = Internal.LibraryStores.SelectedChannelStore.getChannelId()) {
 					if (!Internal.DiscordConstants.Permissions[permission]) BDFDB.LogUtils.warn([permission, "not found in Permissions"]);
@@ -5954,11 +5954,11 @@ module.exports = (_ => {
 						.replace(/\$month/g, timeObj.toLocaleDateString(language, {month: "long"}))
 						.replace(/\$dayS/g, timeObj.toLocaleDateString(language, {weekday: "short"}))
 						.replace(/\$day/g, timeObj.toLocaleDateString(language, {weekday: "long"}))
-						.replace(/\$agoAmount/g, daysAgo < 0 ? "" : daysAgo > 1 ? Internal.DiscordObjects.Timestamp(timeObj.getTime()).fromNow() : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
-						.replace(/\$agoWeekdayS/g, daysAgo < 0 ? "" : daysAgo > 1 ? timeObj.toLocaleDateString(language, {weekday: "short"}) : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
-						.replace(/\$agoWeekday/g, daysAgo < 0 ? "" : daysAgo > 1 ? timeObj.toLocaleDateString(language, {weekday: "long"}) : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
+						.replace(/\$agoAmount/g, daysAgo < 0 || daysAgo > 1 ? Internal.DiscordObjects.Timestamp(timeObj.getTime()).fromNow() : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
+						.replace(/\$agoWeekdayS/g, daysAgo < 0 || daysAgo > 1 ? timeObj.toLocaleDateString(language, {weekday: "short"}) : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
+						.replace(/\$agoWeekday/g, daysAgo < 0 || daysAgo > 1 ? timeObj.toLocaleDateString(language, {weekday: "long"}) : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
 						.replace(/\$agoDays/g, daysAgo < 0 ? "" : daysAgo > 1 ? BDFDB.LanguageUtils.LanguageStringsFormat(`GAME_LIBRARY_LAST_PLAYED_DAYS`, daysAgo) : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
-						.replace(/\$agoDate/g, daysAgo < 0 ? "" : daysAgo > 1 ? date : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
+						.replace(/\$agoDate/g, daysAgo < 0 || daysAgo > 1 ? date : BDFDB.LanguageUtils.LanguageStrings[`SEARCH_SHORTCUT_${daysAgo == 1 ? "YESTERDAY" : "TODAY"}`])
 						.replace(/\(\)|\[\]/g, "").replace(/,\s*$|^\s*,/g, "").replace(/ +/g, " ").trim();
 				};
 				CustomComponents.DateInput.formatDate = function (data, time) {
